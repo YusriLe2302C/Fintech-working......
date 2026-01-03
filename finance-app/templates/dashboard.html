@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceHub - Trading & Personal Finance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">FinanceHub</div>
+        <div class="nav-items">
+            <span id="wallet-balance">₹0</span>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('trading')">Trading</button>
+            <button class="tab-btn" onclick="showTab('wallet')">Wallet & Payments</button>
+            <button class="tab-btn" onclick="showTab('expenses')">Expense Tracker</button>
+            <button class="tab-btn" onclick="showTab('advisor')">AI Advisor</button>
+        </div>
+
+        <!-- Trading Tab -->
+        <div id="trading" class="tab-content active">
+            <div class="grid">
+                <div class="card">
+                    <h3>📈 Market Data</h3>
+                    <div id="assets-list"></div>
+                    <div class="market-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Market Status</span>
+                            <span class="stat-value status-positive">🟢 Open</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>💰 Place Trade</h3>
+                    <form id="trade-form">
+                        <select id="asset-select" required>
+                            <option value="">Select Asset</option>
+                        </select>
+                        <select id="trade-type" required>
+                            <option value="buy">🟢 Buy</option>
+                            <option value="sell">🔴 Sell</option>
+                        </select>
+                        <input type="number" id="quantity" placeholder="Quantity" step="0.01" required>
+                        <div class="trade-preview" id="trade-preview" style="display: none;">
+                            <div class="preview-item">
+                                <span>Estimated Cost:</span>
+                                <span id="estimated-cost">₹0</span>
+                            </div>
+                        </div>
+                        <button type="submit">🚀 Execute Trade</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet Tab -->
+        <div id="wallet" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>💳 Wallet Balance</h3>
+                    <div class="balance-display" id="main-balance">₹0</div>
+                    <div class="balance-change" id="balance-change"></div>
+                    <div class="wallet-actions">
+                        <button onclick="addMoney()">➕ Add Money</button>
+                        <button onclick="withdrawMoney()">➖ Withdraw</button>
+                    </div>
+                    <div class="quick-amounts">
+                        <button class="quick-btn" onclick="quickAdd(1000)">+₹1K</button>
+                        <button class="quick-btn" onclick="quickAdd(5000)">+₹5K</button>
+                        <button class="quick-btn" onclick="quickAdd(10000)">+₹10K</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>📋 Recent Transactions</h3>
+                    <div id="transactions-list">
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <span class="transaction-type">Initial Deposit</span>
+                                <span class="transaction-date">Today</span>
+                            </div>
+                            <span class="transaction-amount status-positive">+₹10,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expenses Tab -->
+        <div id="expenses" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>💸 Add Expense</h3>
+                    <form id="expense-form">
+                        <input type="number" id="expense-amount" placeholder="Amount (₹)" step="0.01" required>
+                        <select id="expense-category" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">🍕 Food</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Subscriptions">📱 Subscriptions</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Trading fees">💹 Trading fees</option>
+                            <option value="Miscellaneous">📦 Miscellaneous</option>
+                        </select>
+                        <input type="date" id="expense-date" required>
+                        <input type="text" id="expense-notes" placeholder="Add notes (optional)">
+                        <button type="submit">➕ Add Expense</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>📊 Weekly Expenses</h3>
+                    <div class="chart-container">
+                        <canvas id="weekly-chart"></canvas>
+                    </div>
+                    <div class="expense-summary" id="expense-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">This Week:</span>
+                            <span class="summary-value" id="week-total">₹0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Daily Average:</span>
+                            <span class="summary-value" id="daily-avg">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>💡 Savings Insights</h3>
+                <div id="savings-insights"></div>
+                <div class="savings-goal">
+                    <h4>Monthly Savings Goal</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="savings-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="goal-info">
+                        <span>₹0 / ₹5,000</span>
+                        <span>0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Advisor Tab -->
+        <div id="advisor" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>🤖 Market Advisor</h3>
+                    <div class="advisor-status">
+                        <span class="status-indicator">🟢</span>
+                        <span>AI Analysis Active</span>
+                    </div>
+                    <div id="market-advice"></div>
+                </div>
+                <div class="card">
+                    <h3>💰 Personal Finance Advisor</h3>
+                    <div class="advisor-status">
+                        <span class="status-indicator">🟢</span>
+                        <span>Smart Insights Ready</span>
+                    </div>
+                    <div id="finance-advice"></div>
+                    <div class="finance-score">
+                        <h4>Financial Health Score</h4>
+                        <div class="score-display">
+                            <span class="score-number">85</span>
+                            <span class="score-label">/100</span>
+                        </div>
+                        <div class="score-description">Good financial habits! Keep it up.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
