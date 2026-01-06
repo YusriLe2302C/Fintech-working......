@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FinanceHub | Reports</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reports.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2>FinanceHub</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a class="active">Reports</a>
+    <a href="#">Payments</a>
+    <a href="#">Settings</a>
+</aside>
+
+<main>
+    <header>
+        <h1>Reports</h1>
+        <select>
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>This Month</option>
+        </select>
+    </header>
+
+    <!-- SUMMARY CARDS -->
+    <section class="summary">
+        <div class="card">
+            <p>Total Earnings</p>
+            <h2>₹82,450</h2>
+            <span class="up">▲ 14%</span>
+        </div>
+
+        <div class="card">
+            <p>Total Clicks</p>
+            <h2>4,382</h2>
+            <span class="up">▲ 9%</span>
+        </div>
+
+        <div class="card">
+            <p>Avg. CPC</p>
+            <h2>₹18.40</h2>
+            <span class="down">▼ 2%</span>
+        </div>
+    </section>
+
+    <!-- CHART -->
+    <section class="chart">
+        <div class="chart-box">
+            📊 Earnings & Clicks Chart
+        </div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="table-section">
+        <h2>Detailed Report</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Views</th>
+                    <th>Clicks</th>
+                    <th>CTR</th>
+                    <th>Earnings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01 Jan 2026</td>
+                    <td>12,430</td>
+                    <td>340</td>
+                    <td>2.7%</td>
+                    <td>₹6,540</td>
+                </tr>
+                <tr>
+                    <td>02 Jan 2026</td>
+                    <td>10,210</td>
+                    <td>290</td>
+                    <td>2.8%</td>
+                    <td>₹5,980</td>
+                </tr>
+                <tr>
+                    <td>03 Jan 2026</td>
+                    <td>13,800</td>
+                    <td>410</td>
+                    <td>3.0%</td>
+                    <td>₹7,200</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FinanceHub | Payments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="payments.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2>FinanceHub</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="reports.html">Reports</a>
+    <a class="active">Payments</a>
+    <a href="#">Settings</a>
+</aside>
+
+<main>
+    <header>
+        <h1>Payments</h1>
+        <button class="payout-btn">Request Payout</button>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="summary">
+        <div class="card">
+            <p>Available Balance</p>
+            <h2>₹24,500</h2>
+        </div>
+
+        <div class="card">
+            <p>Pending Earnings</p>
+            <h2>₹8,200</h2>
+        </div>
+
+        <div class="card">
+            <p>Total Paid</p>
+            <h2>₹1,45,300</h2>
+        </div>
+    </section>
+
+    <!-- PAYMENT METHOD -->
+    <section class="method">
+        <h2>Payment Method</h2>
+        <div class="method-box">
+            <p><strong>Bank Account</strong></p>
+            <span>HDFC Bank •••• 4582</span>
+            <button class="edit-btn">Edit</button>
+        </div>
+    </section>
+
+    <!-- PAYMENT HISTORY -->
+    <section class="table-section">
+        <h2>Payment History</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Transaction ID</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01 Jan 2026</td>
+                    <td>#PAY234567</td>
+                    <td>₹12,000</td>
+                    <td class="paid">Paid</td>
+                </tr>
+                <tr>
+                    <td>01 Dec 2025</td>
+                    <td>#PAY198432</td>
+                    <td>₹15,500</td>
+                    <td class="paid">Paid</td>
+                </tr>
+                <tr>
+                    <td>01 Nov 2025</td>
+                    <td>#PAY174325</td>
+                    <td>₹9,200</td>
+                    <td class="pending">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+</body>
+</html>
