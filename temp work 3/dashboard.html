@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – BudgetWise GenZ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body class="theme-dark" style="opacity: 0;">
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>💰 BudgetWise</h2>
+      <nav>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="expenses.html">Expenses</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="insight.html">AI Insights</a>
+        <a href="learn.html">Learn</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="profile.html">Profile</a>
+        <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <div class="flex-between mb-2">
+        <div>
+          <h1 id="greeting">Good Evening ✨</h1>
+          <p id="tipOfDay" style="color: var(--text-secondary); margin-top: 0.5rem;"></p>
+        </div>
+      </div>
+
+      <!-- STATS CARDS -->
+      <div class="stats">
+        <div class="stat-card">
+          <h3>💸 Total Spent</h3>
+          <div class="value" id="totalSpent">₹0</div>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;" id="monthSpent"></p>
+        </div>
+
+        <div class="stat-card">
+          <h3>📊 Transactions</h3>
+          <div class="value" id="transactionCount">0</div>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">This month</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>🎯 Learning Streak</h3>
+          <div class="value" id="learningStreak">0</div>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">Days in a row</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>⭐ Total Points</h3>
+          <div class="value" id="totalPoints">0</div>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;" id="levelText">Level 1</p>
+        </div>
+      </div>
+
+      <!-- WEEKLY SPENDING CHART -->
+      <div class="card mb-2">
+        <h3 style="margin-bottom: 1.5rem;">📈 Weekly Spending Trend</h3>
+        <canvas id="weeklyChart" height="80"></canvas>
+      </div>
+
+      <!-- RECENT EXPENSES -->
+      <div class="card">
+        <div class="flex-between mb-1">
+          <h3>🔥 Recent Expenses</h3>
+          <button class="btn-primary" onclick="navigateTo('expenses.html')">+ Add Expense</button>
+        </div>
+        <div id="recentExpenses"></div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="store.js"></script>
+  <script src="utils.js"></script>
+  <script src="theme.js"></script>
+  <script src="router.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+
+</html>

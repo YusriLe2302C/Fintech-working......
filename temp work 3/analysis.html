@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis – BudgetWise GenZ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body class="theme-dark" style="opacity: 0;">
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>💰 BudgetWise</h2>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="expenses.html">Expenses</a>
+        <a href="analysis.html" class="active">Analysis</a>
+        <a href="insight.html">AI Insights</a>
+        <a href="learn.html">Learn</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="profile.html">Profile</a>
+        <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <h1>📊 Spending Analysis</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+        Visualize your spending patterns and identify trends
+      </p>
+
+      <!-- SUMMARY STATS -->
+      <div class="stats">
+        <div class="stat-card">
+          <h3>💰 This Month</h3>
+          <div class="value" id="monthTotal">₹0</div>
+        </div>
+        <div class="stat-card">
+          <h3>📅 Average Daily</h3>
+          <div class="value" id="avgDaily">₹0</div>
+        </div>
+        <div class="stat-card">
+          <h3>🎯 Top Category</h3>
+          <div class="value" id="topCategory" style="font-size: 1.5rem;">-</div>
+        </div>
+      </div>
+
+      <!-- CHARTS -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem;">
+        <div class="card">
+          <h3 style="margin-bottom: 1.5rem;">🍰 Category Breakdown</h3>
+          <canvas id="categoryChart"></canvas>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom: 1.5rem;">📈 Monthly Trend</h3>
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- DETAILED BREAKDOWN -->
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3 style="margin-bottom: 1.5rem;">📋 Category Details</h3>
+        <div id="categoryBreakdown"></div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="store.js"></script>
+  <script src="utils.js"></script>
+  <script src="theme.js"></script>
+  <script src="router.js"></script>
+  <script src="analysis.js"></script>
+</body>
+
+</html>

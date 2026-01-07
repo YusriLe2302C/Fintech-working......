@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expenses – BudgetWise GenZ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark" style="opacity: 0;">
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>💰 BudgetWise</h2>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="expenses.html" class="active">Expenses</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="insight.html">AI Insights</a>
+        <a href="learn.html">Learn</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="profile.html">Profile</a>
+        <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <div class="flex-between mb-2">
+        <h1>💸 Track Expenses</h1>
+        <button class="btn-primary" onclick="openExpenseModal()">+ Add Expense</button>
+      </div>
+
+      <!-- SEARCH AND FILTER -->
+      <div class="card mb-2">
+        <input type="text" id="searchExpenses" placeholder="🔍 Search by category or amount..."
+          style="margin-bottom: 0;" oninput="renderExpenses()">
+      </div>
+
+      <!-- EXPENSE LIST -->
+      <div id="expenseList"></div>
+
+    </main>
+
+  </div>
+
+  <!-- ADD/EDIT EXPENSE MODAL -->
+  <div class="modal hidden" id="expenseModal">
+    <div class="modal-content" style="max-width: 600px;">
+      <h3 id="modalTitle">💸 Add New Expense</h3>
+
+      <input type="number" id="expenseAmount" placeholder="Amount (₹)" min="0" step="0.01" required>
+
+      <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">
+        Select Category (or choose multiple):
+      </label>
+
+      <!-- CATEGORY CHECKBOXES -->
+      <div class="checkbox-group">
+        <label class="checkbox-label" data-category="Food">
+          <input type="checkbox" value="Food" onchange="handleCategoryCheck(this)">
+          <span>🍔 Food</span>
+        </label>
+        <label class="checkbox-label" data-category="Travel">
+          <input type="checkbox" value="Travel" onchange="handleCategoryCheck(this)">
+          <span>✈️ Travel</span>
+        </label>
+        <label class="checkbox-label" data-category="Shopping">
+          <input type="checkbox" value="Shopping" onchange="handleCategoryCheck(this)">
+          <span>🛍️ Shopping</span>
+        </label>
+        <label class="checkbox-label" data-category="Clothes">
+          <input type="checkbox" value="Clothes" onchange="handleCategoryCheck(this)">
+          <span>👕 Clothes</span>
+        </label>
+        <label class="checkbox-label" data-category="Entertainment">
+          <input type="checkbox" value="Entertainment" onchange="handleCategoryCheck(this)">
+          <span>🎮 Entertainment</span>
+        </label>
+        <label class="checkbox-label" data-category="Utilities">
+          <input type="checkbox" value="Utilities" onchange="handleCategoryCheck(this)">
+          <span>💡 Utilities</span>
+        </label>
+        <label class="checkbox-label" data-category="Health">
+          <input type="checkbox" value="Health" onchange="handleCategoryCheck(this)">
+          <span>⚕️ Health</span>
+        </label>
+      </div>
+
+      <label
+        style="display: block; margin-top: 1rem; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">
+        Or enter custom category:
+      </label>
+      <input type="text" id="customCategory" placeholder="Enter custom category name (optional)">
+
+      <input type="date" id="expenseDate" required>
+
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeExpenseModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveExpense()">Save Expense</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="store.js"></script>
+  <script src="utils.js"></script>
+  <script src="theme.js"></script>
+  <script src="router.js"></script>
+  <script src="expenses.js"></script>
+</body>
+
+</html>

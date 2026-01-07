@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Insights – BudgetWise GenZ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark" style="opacity: 0;">
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>💰 BudgetWise</h2>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="expenses.html">Expenses</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="insight.html" class="active">AI Insights</a>
+        <a href="learn.html">Learn</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="profile.html">Profile</a>
+        <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <h1>🤖 AI-Powered Insights</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+        Personalized recommendations to help you save money and build wealth
+      </p>
+
+      <!-- INSIGHTS CARDS -->
+      <div id="insightsContainer"></div>
+
+      <!-- SPENDING TIPS -->
+      <div class="card" style="margin-top: 1.5rem;">
+        <h3 style="margin-bottom: 1rem;">💡 Smart Savings Tips</h3>
+        <div id="tipsContainer"></div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="store.js"></script>
+  <script src="utils.js"></script>
+  <script src="theme.js"></script>
+  <script src="router.js"></script>
+  <script src="insights.js"></script>
+</body>
+
+</html>

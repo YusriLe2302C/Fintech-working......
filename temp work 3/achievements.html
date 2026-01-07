@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements – BudgetWise GenZ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-dark" style="opacity: 0;">
+
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2>💰 BudgetWise</h2>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="expenses.html">Expenses</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="insight.html">AI Insights</a>
+        <a href="learn.html">Learn</a>
+        <a href="achievements.html" class="active">Achievements</a>
+        <a href="profile.html">Profile</a>
+        <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <h1>🏆 Your Achievements</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+        Celebrate your financial journey milestones
+      </p>
+
+      <!-- PROGRESS OVERVIEW -->
+      <div class="card mb-2" style="background: var(--gradient-primary); color: white;">
+        <div style="display: flex; justify-content: space-around; text-align: center;">
+          <div>
+            <div style="font-size: 2.5rem; font-weight: 700;" id="unlockedCount">0</div>
+            <div style="opacity: 0.9;">Unlocked</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; font-weight: 700;" id="totalCount">0</div>
+            <div style="opacity: 0.9;">Total</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; font-weight: 700;" id="progressPercent">0%</div>
+            <div style="opacity: 0.9;">Progress</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS GRID -->
+      <div id="achievementsContainer"
+        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;"></div>
+
+    </main>
+
+  </div>
+
+  <script src="store.js"></script>
+  <script src="utils.js"></script>
+  <script src="theme.js"></script>
+  <script src="router.js"></script>
+  <script src="learning-data.js"></script>
+  <script src="achievements.js"></script>
+</body>
+
+</html>
